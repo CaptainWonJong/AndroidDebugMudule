@@ -1,0 +1,12 @@
+<resources>
+    <string name="debugging_app_name">App Name</string>
+    <string name="debugging_app_version">App Version</string>
+    <string name="debugging_device_manufacturer">Manufacturer</string>
+    <string name="debugging_device_model">Device Model</string>
+    <string name="debugging_os_version">OS Version</string>
+    <string name="debugging_guid">GUID</string>
+    <string name="debugging_push_token">Push Token</string>
+    <string name="debugging_api_prefix_url">API URL</string>
+
+    <string name="debugging_msg_copy_to_clipboard">Copied to the clipboard.</string>
+</resources>

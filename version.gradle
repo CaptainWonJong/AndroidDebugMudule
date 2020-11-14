@@ -1,0 +1,16 @@
+ext {
+    compileSdkVersion = 29
+    buildToolsVersion = "30.0.2"
+    minSdkVersion = 23
+    targetSdkVersion = 29
+
+    // Library
+    glideVersion = '4.11.0'
+    gsonVersion = '2.8.6'
+    okHttpVersion = '4.9.0'
+    retrofitVersion = '2.9.0'
+
+    activityVersion = '1.1.0'
+    fragmentVersion = '1.2.5'
+    lifecycleVersion = '2.2.0'
+}

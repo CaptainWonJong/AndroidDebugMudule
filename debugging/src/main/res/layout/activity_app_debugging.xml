@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.AppDebuggingActivity">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.wonjong.debugging.ui.AppDebuggingViewModel" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_weight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:onClick="@{() -> model.onBackClickEventListener()}"
+                android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close_black" />
+
+            <TextView
+                android:id="@+id/tv_title_app_name"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_app_name"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/gd_head" />
+
+            <TextView
+                android:id="@+id/tv_title_app_version"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_app_version"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_app_name" />
+
+            <TextView
+                android:id="@+id/tv_title_device_manufacturer"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_device_manufacturer"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_app_version" />
+
+            <TextView
+                android:id="@+id/tv_title_device_model"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_device_model"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_device_manufacturer" />
+
+            <TextView
+                android:id="@+id/tv_title_os_version"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_os_version"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_device_model" />
+
+            <TextView
+                android:id="@+id/tv_title_api_prefix_url"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_api_prefix_url"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_os_version" />
+
+            <TextView
+                android:id="@+id/tv_title_guid"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_guid"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_api_prefix_url" />
+
+            <TextView
+                android:id="@+id/tv_title_push_token"
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@string/debugging_push_token"
+                android:visibility="@{model.pushToken == null || model.pushToken.empty ? View.GONE : View.VISIBLE}"
+                app:layout_constraintEnd_toEndOf="@id/gd_contents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_guid" />
+
+            <View
+                android:id="@+id/v_horizontal_line"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:background="@color/debugging_line"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/gd_head" />
+
+            <TextView
+                android:id="@+id/tv_app_name"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.appName}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_app_name"
+                tools:text="상식" />
+
+            <TextView
+                android:id="@+id/tv_app_version"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.appVersion}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_app_version"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_app_version"
+                tools:text="1.2.3" />
+
+            <TextView
+                android:id="@+id/tv_device_manufacturer"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.deviceManufacturer}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_device_manufacturer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_device_manufacturer"
+                tools:text="Samsung" />
+
+            <TextView
+                android:id="@+id/tv_device_model"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.deviceModel}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_device_model"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_device_model"
+                tools:text="갤럭시 S20" />
+
+            <TextView
+                android:id="@+id/tv_os_version"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.osVersion}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_os_version"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_os_version"
+                tools:text="4.4.2" />
+
+            <TextView
+                android:id="@+id/tv_api_prefix_url"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.apiPrefixUrl}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_api_prefix_url"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_api_prefix_url"
+                tools:text="https://www.naver.com" />
+
+            <TextView
+                android:id="@+id/tv_guid"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.guid}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_guid"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_guid"
+                tools:text="guid" />
+
+            <TextView
+                android:id="@+id/tv_push_token"
+                style="@style/TextAppearance.AppCompat.Body1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:padding="8dp"
+                android:text="@{model.pushToken}"
+                android:visibility="@{model.pushToken == null || model.pushToken.empty ? View.GONE : View.VISIBLE}"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title_push_token"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/gd_contents"
+                app:layout_constraintTop_toTopOf="@id/tv_title_push_token"
+                tools:text="qwerasdfzxcv" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gd_contents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.30" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gd_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="70dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

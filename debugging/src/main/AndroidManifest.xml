@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wonjong.debugging">
+
+    <application>
+        <activity
+            android:name=".ui.AppDebuggingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/DebuggingTheme"
+            tools:ignore="LockedOrientationActivity" />
+
+        <provider android:name=".DebuggingProvider"
+            android:authorities="${applicationId}.debugging"
+            android:exported="false" />
+    </application>
+</manifest>
